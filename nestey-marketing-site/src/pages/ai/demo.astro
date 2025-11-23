@@ -8,19 +8,35 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <aside class="chat-sidebar">
       <div class="sidebar-header">
         <button class="new-chat-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 5v14M5 12h14"/>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M12 5v14M5 12h14"></path>
           </svg>
           New chat
         </button>
       </div>
-      
+
       <div class="chat-history">
         <div class="history-section">
           <div class="history-label">Today</div>
           <button class="history-item active">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+              ></path>
             </svg>
             Employee onboarding questions
           </button>
@@ -45,22 +61,40 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       <div class="chat-messages" id="chatMessages">
         <div class="welcome-screen">
           <div class="nestey-logo">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-              <path d="M8 10h.01M12 10h.01M16 10h.01"/>
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+              ></path>
+              <path d="M8 10h.01M12 10h.01M16 10h.01"></path>
             </svg>
           </div>
           <h2>How can I help you today?</h2>
           <div class="suggestion-grid">
-            <button class="suggestion-card" data-prompt="How do I request time off?">
+            <button
+              class="suggestion-card"
+              data-prompt="How do I request time off?"
+            >
               <div class="suggestion-icon">📅</div>
               <div class="suggestion-text">Request time off</div>
             </button>
-            <button class="suggestion-card" data-prompt="What are the company holidays?">
+            <button
+              class="suggestion-card"
+              data-prompt="What are the company holidays?"
+            >
               <div class="suggestion-icon">🎉</div>
               <div class="suggestion-text">Company holidays</div>
             </button>
-            <button class="suggestion-card" data-prompt="How do I update my benefits?">
+            <button
+              class="suggestion-card"
+              data-prompt="How do I update my benefits?"
+            >
               <div class="suggestion-icon">💼</div>
               <div class="suggestion-text">Update benefits</div>
             </button>
@@ -74,15 +108,14 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
       <div class="chat-input-container">
         <div class="chat-input-wrapper">
-          <textarea 
-            id="chatInput" 
-            class="chat-input" 
+          <textarea
+            id="chatInput"
+            class="chat-input"
             placeholder="Message Nestey AI..."
-            rows="1"
-          ></textarea>
+            rows="1"></textarea>
           <button id="sendBtn" class="send-btn" disabled>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
             </svg>
           </button>
         </div>
@@ -328,8 +361,14 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .message-avatar {
@@ -476,15 +515,17 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 </style>
 
 <script>
-  const chatInput = document.getElementById('chatInput') as HTMLTextAreaElement;
-  const sendBtn = document.getElementById('sendBtn') as HTMLButtonElement;
-  const chatMessages = document.getElementById('chatMessages') as HTMLDivElement;
-  const suggestionCards = document.querySelectorAll('.suggestion-card');
+  const chatInput = document.getElementById("chatInput") as HTMLTextAreaElement;
+  const sendBtn = document.getElementById("sendBtn") as HTMLButtonElement;
+  const chatMessages = document.getElementById(
+    "chatMessages"
+  ) as HTMLDivElement;
+  const suggestionCards = document.querySelectorAll(".suggestion-card");
 
   // Auto-resize textarea
-  chatInput.addEventListener('input', () => {
-    chatInput.style.height = 'auto';
-    chatInput.style.height = chatInput.scrollHeight + 'px';
+  chatInput.addEventListener("input", () => {
+    chatInput.style.height = "auto";
+    chatInput.style.height = chatInput.scrollHeight + "px";
     sendBtn.disabled = chatInput.value.trim().length === 0;
   });
 
@@ -493,14 +534,14 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     if (!message.trim()) return;
 
     // Remove welcome screen if present
-    const welcomeScreen = chatMessages.querySelector('.welcome-screen');
+    const welcomeScreen = chatMessages.querySelector(".welcome-screen");
     if (welcomeScreen) {
       welcomeScreen.remove();
     }
 
     // Add user message
-    const userMsg = document.createElement('div');
-    userMsg.className = 'message user';
+    const userMsg = document.createElement("div");
+    userMsg.className = "message user";
     userMsg.innerHTML = `
       <div class="message-avatar">U</div>
       <div class="message-content">
@@ -510,8 +551,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     chatMessages.appendChild(userMsg);
 
     // Clear input
-    chatInput.value = '';
-    chatInput.style.height = 'auto';
+    chatInput.value = "";
+    chatInput.style.height = "auto";
     sendBtn.disabled = true;
 
     // Scroll to bottom
@@ -519,8 +560,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
     // Simulate AI response
     setTimeout(() => {
-      const assistantMsg = document.createElement('div');
-      assistantMsg.className = 'message assistant';
+      const assistantMsg = document.createElement("div");
+      assistantMsg.className = "message assistant";
       assistantMsg.innerHTML = `
         <div class="message-avatar">N</div>
         <div class="message-content">
@@ -533,21 +574,21 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   }
 
   // Send button click
-  sendBtn.addEventListener('click', () => {
+  sendBtn.addEventListener("click", () => {
     sendMessage(chatInput.value);
   });
 
   // Enter to send (Shift+Enter for new line)
-  chatInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+  chatInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       sendMessage(chatInput.value);
     }
   });
 
   // Suggestion cards
-  suggestionCards.forEach(card => {
-    card.addEventListener('click', () => {
+  suggestionCards.forEach((card) => {
+    card.addEventListener("click", () => {
       const prompt = (card as HTMLElement).dataset.prompt;
       if (prompt) {
         sendMessage(prompt);
@@ -557,7 +598,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
   // Escape HTML
   function escapeHtml(text: string): string {
-    const div = document.createElement('div');
+    const div = document.createElement("div");
     div.textContent = text;
     return div.innerHTML;
   }
@@ -565,8 +606,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   // Simple AI response generator
   function getAIResponse(question: string): string {
     const q = question.toLowerCase();
-    
-    if (q.includes('time off') || q.includes('vacation') || q.includes('pto')) {
+
+    if (q.includes("time off") || q.includes("vacation") || q.includes("pto")) {
       return `To request time off in Nestey:<br><br>
         1. Go to the <strong>Time Off</strong> section in your dashboard<br>
         2. Click <strong>"Request Time Off"</strong><br>
@@ -575,8 +616,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         5. Submit for approval<br><br>
         Your manager will be notified automatically and you'll receive an update once it's reviewed. You currently have <strong>15 days</strong> of PTO remaining this year.`;
     }
-    
-    if (q.includes('holiday') || q.includes('holidays')) {
+
+    if (q.includes("holiday") || q.includes("holidays")) {
       return `Here are the company holidays for 2025:<br><br>
         • New Year's Day - January 1<br>
         • Memorial Day - May 26<br>
@@ -586,8 +627,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         • Christmas - December 25-26<br><br>
         All offices will be closed on these dates. These are paid holidays for full-time employees.`;
     }
-    
-    if (q.includes('benefit') || q.includes('benefits')) {
+
+    if (q.includes("benefit") || q.includes("benefits")) {
       return `You can update your benefits through Nestey:<br><br>
         1. Navigate to <strong>My Benefits</strong> in the main menu<br>
         2. Review your current elections<br>
@@ -595,8 +636,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         4. Update your selections<br><br>
         Note: Benefits changes outside of open enrollment require a qualifying life event (marriage, birth of child, etc.). Open enrollment period is typically in November. Need help? Contact benefits@company.com`;
     }
-    
-    if (q.includes('hr contact') || q.includes('hr team')) {
+
+    if (q.includes("hr contact") || q.includes("hr team")) {
       return `Your HR contacts are:<br><br>
         <strong>Primary HR Business Partner:</strong><br>
         Sarah Johnson - sarah.johnson@company.com<br><br>
@@ -606,7 +647,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         payroll@company.com<br><br>
         You can also reach the HR team through the Help Center in Nestey or by calling (555) 123-4567.`;
     }
-    
+
     return `I'm here to help with your HR questions! I can assist with:<br><br>
       • Time off requests and PTO balances<br>
       • Benefits information and enrollment<br>

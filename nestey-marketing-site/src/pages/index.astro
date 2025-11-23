@@ -1,0 +1,126 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import NavBar from "../components/NavBar.astro";
+---
+
+<BaseLayout title="Nestey — Modern HRIS Reinvented">
+  <NavBar />
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <h1>HR, reinvented for the modern workforce.</h1>
+        <p>
+          Nestey is a modern HR platform powered by AI. Employees love using it.
+          HR teams finally get simplicity. Leaders gain visibility.
+        </p>
+
+        <div class="hero-buttons">
+          <a class="btn" href="/demo">Book a Demo</a>
+          <a class="btn" href="/ai/demo">Try Nestey AI</a>
+        </div>
+      </div>
+
+      <!-- Removed hero image -->
+      <div class="hero-image"></div>
+    </div>
+  </section>
+
+  <!-- FEATURE PREVIEW SECTION -->
+  <section class="features">
+    <div class="container">
+      <h2 class="text-center mb-3">What Makes Nestey Different</h2>
+
+      <div class="feature-grid">
+        <div class="card">
+          <h3>AI-Driven Employee Experience</h3>
+          <p>
+            Employees complete HR tasks through conversational AI, not confusing
+            menus.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Intuitive Time Off & Scheduling</h3>
+          <p>
+            No spreadsheets. No tracking emails. Everything flows automatically.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Goal Setting & Performance</h3>
+          <p>
+            Simple, flexible review cycles with built-in feedback and
+            visibility.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* HERO */
+  .hero {
+    padding: 6rem 0;
+    background: var(--brand-card-bg);
+  }
+
+  .hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  .hero-content {
+    max-width: 580px;
+  }
+
+  .hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--brand-blue);
+  }
+
+  .hero-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1.2rem;
+  }
+
+  /* Empty hero-image container for now */
+  .hero-image {
+    width: 0;
+    height: 0;
+  }
+
+  /* FEATURES */
+  .features {
+    background: var(--brand-background);
+    padding: 4rem 0 5rem;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .hero-image {
+      display: none;
+    }
+
+    .feature-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,44 @@
+Home ( / )
+│
+├── Product ( /product )
+│     ├── Employee Hub ( /product/employee-hub )
+│     ├── Benefits & Open Enrollment ( /product/benefits )
+│     ├── Time Off ( /product/time-off )
+│     ├── Performance Reviews ( /product/performance )
+│     ├── Org Chart ( /product/org-chart )
+│     ├── Mobile App ( /product/mobile-app )
+│     └── AI Assistant ( /product/ai-assistant )
+│
+├── AI ( /ai )
+│     ├── Meet Nestey AI ( /ai )
+│     ├── Live Demo ( /ai/demo )
+│     └── How It Works ( /ai/how-it-works )
+│
+├── Solutions ( /solutions )
+│     ├── For HR Teams ( /solutions/hr-teams )
+│     ├── For Employees ( /solutions/employees )
+│     ├── For Managers ( /solutions/managers )
+│     ├── For Small Business ( /solutions/smb )
+│     └── For Mid-Market ( /solutions/midmarket )
+│
+├── Pricing ( /pricing )
+│
+├── Resources ( /resources )
+│     ├── Blog ( /resources/blog )
+│     ├── Guides ( /resources/guides )
+│     ├── Templates ( /resources/templates )
+│     └── Product Updates ( /resources/updates )
+│
+├── About ( /about )
+│     ├── Leadership ( /about/leadership )
+│     └── Careers ( /about/careers )
+│
+├── Security & Trust ( /trust )
+│
+├── Contact ( /contact )
+│
+└── Legal (footer only)
+      ├── Privacy Policy ( /legal/privacy )
+      ├── Terms of Service ( /legal/terms )
+      └── Cookie Policy ( /legal/cookies )
+

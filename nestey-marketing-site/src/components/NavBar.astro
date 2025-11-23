@@ -1,0 +1,134 @@
+---
+const productItems = [
+  { name: "Time Off", href: "/product/time-off" },
+  { name: "Benefits", href: "/product/benefits" },
+  { name: "Goals & Reviews", href: "/product/goals" },
+  { name: "Org Chart", href: "/product/org-chart" },
+  { name: "AI Assistant", href: "/product/ai-assistant" },
+];
+---
+
+<nav class="navbar">
+  <div class="container nav-inner">
+    <div class="nav-logo">
+      <a href="/">Nestey</a>
+    </div>
+
+    <ul class="nav-links">
+      <!-- PRODUCT DROPDOWN -->
+      <li class="dropdown">
+        <a class="dropdown-trigger">Product</a>
+
+        <ul class="dropdown-menu">
+          {
+            productItems.map((item) => (
+              <li>
+                <a href={item.href}>{item.name}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </li>
+
+      <li><a href="/ai">AI</a></li>
+      <li><a href="/solutions">Solutions</a></li>
+      <li><a href="/pricing">Pricing</a></li>
+      <li><a href="/resources">Resources</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    background: var(--brand-blue);
+    padding: 1rem 0;
+    color: var(--text-light);
+  }
+
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* LOGO TEXT */
+  .nav-logo a {
+    color: var(--text-light);
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  /* NAV LINKS */
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  /* DROPDOWN */
+  .dropdown {
+    position: relative;
+  }
+
+  /* Make the whole button clickable */
+  .dropdown-trigger {
+    cursor: pointer;
+    padding: 0.5rem 0;
+    display: inline-block;
+  }
+
+  /* The dropdown container */
+  .dropdown-menu {
+    position: absolute;
+    top: 2.4rem;
+    left: 0;
+    background: white;
+    color: var(--text-dark);
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    padding: 0.5rem 0;
+    list-style: none;
+    min-width: 200px;
+    display: none;
+    z-index: 50;
+
+    /* Remove any accidental gaps */
+    margin-top: 0;
+  }
+
+  /* Dropdown items */
+  .dropdown-menu li a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--text-dark);
+    white-space: nowrap;
+  }
+
+  /* 🧠 The menu stays open if either the parent OR the menu is hovered */
+  .dropdown:hover .dropdown-menu,
+  .dropdown:focus-within .dropdown-menu,
+  .dropdown-menu:hover {
+    display: block;
+  }
+
+  /* 🧩 Invisible bridge to prevent gaps (critical fix) */
+  .dropdown::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 20px; /* adjust as needed */
+    background: transparent;
+  }
+</style>

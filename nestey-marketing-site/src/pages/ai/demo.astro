@@ -286,8 +286,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     flex: 1;
     overflow-y: auto;
     padding: 2rem;
-    display: flex;
-    flex-direction: column;
   }
 
   /* ============ WELCOME SCREEN ============ */
@@ -353,11 +351,13 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   }
 
   /* ============ MESSAGE BUBBLES ============ */
-  .message {
+  .chat-messages .message {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    animation: fadeIn 0.3s ease;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    animation: fadeIn 0.25s ease;
+    max-width: 70%;
+    clear: both;
   }
 
   @keyframes fadeIn {
@@ -371,14 +371,27 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     }
   }
 
+  /* Assistant LEFT */
+  .chat-messages .message.assistant {
+    float: left;
+    flex-direction: row;
+  }
+
+  /* User RIGHT */
+  .chat-messages .message.user {
+    float: right;
+    flex-direction: row-reverse;
+  }
+
+  /* Avatar */
   .message-avatar {
     width: 36px;
     height: 36px;
     border-radius: 50%;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
     font-weight: 600;
     font-size: 0.9rem;
   }
@@ -393,26 +406,43 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     color: white;
   }
 
+  /* Container for text */
   .message-content {
-    flex: 1;
-    max-width: 800px;
+    min-width: 0;
   }
 
+  /* Bubble styling */
   .message-text {
     padding: 1rem 1.25rem;
     border-radius: var(--radius-md);
-    line-height: 1.6;
+    line-height: 1.55;
+    word-wrap: break-word;
   }
 
+  /* User bubble */
   .message.user .message-text {
-    background: var(--brand-background);
-    color: var(--text-dark);
+    background: var(--brand-blue-accent) !important;
+    color: white !important;
   }
 
+  /* Assistant bubble */
   .message.assistant .message-text {
-    background: white;
-    color: var(--text-dark);
-    border: 1px solid var(--brand-border);
+    background: var(--brand-background) !important;
+    color: var(--text-dark) !important;
+  }
+  
+  /* User RIGHT - FORCE IT */
+  .message.user {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    flex-direction: row-reverse !important;
+  }
+
+  /* Assistant LEFT - FORCE IT */
+  .message.assistant {
+    margin-right: auto !important;
+    margin-left: 0 !important;
+    flex-direction: row !important;
   }
 
   /* ============ INPUT AREA ============ */
@@ -542,6 +572,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     // Add user message
     const userMsg = document.createElement("div");
     userMsg.className = "message user";
+    userMsg.style.cssText = "float: right !important; max-width: 70%; clear: both;";
     userMsg.innerHTML = `
       <div class="message-avatar">U</div>
       <div class="message-content">
@@ -562,6 +593,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     setTimeout(() => {
       const assistantMsg = document.createElement("div");
       assistantMsg.className = "message assistant";
+      assistantMsg.style.cssText = "float: left !important; max-width: 70%; clear: both;";
       assistantMsg.innerHTML = `
         <div class="message-avatar">N</div>
         <div class="message-content">

@@ -430,7 +430,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     background: var(--brand-background) !important;
     color: var(--text-dark) !important;
   }
-  
+
   /* User RIGHT - FORCE IT */
   .message.user {
     margin-left: auto !important;
@@ -572,11 +572,12 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     // Add user message
     const userMsg = document.createElement("div");
     userMsg.className = "message user";
-    userMsg.style.cssText = "float: right !important; max-width: 70%; clear: both;";
+    userMsg.style.cssText =
+      "float: right !important; max-width: 70%; clear: both;";
     userMsg.innerHTML = `
-      <div class="message-avatar">U</div>
+      <div class="message-avatar" style="background: #3A7AFE; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">Me</div>
       <div class="message-content">
-        <div class="message-text">${escapeHtml(message)}</div>
+        <div class="message-text" style="background: #3A7AFE !important; color: white !important; padding: 0.65rem 1rem; border-radius: 18px; margin-top: 0.5rem;">${escapeHtml(message)}</div>
       </div>
     `;
     chatMessages.appendChild(userMsg);
@@ -593,9 +594,12 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     setTimeout(() => {
       const assistantMsg = document.createElement("div");
       assistantMsg.className = "message assistant";
-      assistantMsg.style.cssText = "float: left !important; max-width: 70%; clear: both;";
+      assistantMsg.style.cssText =
+        "float: left !important; max-width: 70%; clear: both;";
       assistantMsg.innerHTML = `
-        <div class="message-avatar">N</div>
+        <div class="message-avatar" style="width: 44px; height: 44px; min-width: 44px; min-height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 0; flex-shrink: 0;">
+          <img src="/icons/nesteyAvatar_144x144.png" alt="Nestey" style="width: 100%; height: 100%; object-fit: cover;" />
+        </div>
         <div class="message-content">
           <div class="message-text">${getAIResponse(message)}</div>
         </div>

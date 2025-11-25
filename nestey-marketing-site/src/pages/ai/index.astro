@@ -1,0 +1,226 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import NavBar from "../../components/NavBar.astro";
+---
+
+<BaseLayout title="Nestey AI — Intelligent HR Assistant">
+  <NavBar />
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <h1>Meet Nestey AI</h1>
+        <p class="hero-main">
+          Nestey AI helps employees get answers, make decisions, and take action — instantly.
+        </p>
+        <p class="hero-sub">
+          Time off, benefits, pay, reviews… Nestey handles it all through natural conversation.
+        </p>
+
+        <div class="hero-buttons">
+          <a class="btn" href="/ai/demo">Try Nestey AI</a>
+        </div>
+      </div>
+
+      <div class="hero-image"></div>
+    </div>
+  </section>
+
+  <!-- WHAT NESTEY AI CAN DO -->
+  <section class="features">
+    <div class="container">
+      <h2 class="text-center mb-3">What Nestey AI Can Do</h2>
+
+      <div class="three-column-layout">
+        <!-- For Employees -->
+        <div class="column">
+          <h3 class="column-title">For Employees</h3>
+          
+          <div class="card">
+            <h4>Book Time Off</h4>
+            <p>"Hey Nestey, book next Friday off."</p>
+          </div>
+
+          <div class="card">
+            <h4>Explain Benefits</h4>
+            <p>Get benefits explained in plain English</p>
+          </div>
+
+          <div class="card">
+            <h4>Recommend Best Plan</h4>
+            <p>Get the best plan based on your usage</p>
+          </div>
+
+          <div class="card">
+            <h4>Project Retirement</h4>
+            <p>See your retirement savings projections</p>
+          </div>
+
+          <div class="card">
+            <h4>Tax-Free Options</h4>
+            <p>Find tax-free options you're missing</p>
+          </div>
+
+          <div class="card">
+            <h4>Review Summary</h4>
+            <p>Get your annual review summarized</p>
+          </div>
+
+          <div class="card">
+            <h4>Quick Answers</h4>
+            <p>Find your HR manager, PTO balance, next pay date</p>
+          </div>
+        </div>
+
+        <!-- For Managers -->
+        <div class="column">
+          <h3 class="column-title">For Managers</h3>
+          
+          <div class="card">
+            <h4>Approve PTO</h4>
+            <p>Review and approve time off requests instantly</p>
+          </div>
+
+          <div class="card">
+            <h4>Summarize Team Goals</h4>
+            <p>Get a quick overview of team objectives</p>
+          </div>
+
+          <div class="card">
+            <h4>Flag Overdue Reviews</h4>
+            <p>Stay on top of performance review deadlines</p>
+          </div>
+
+          <div class="card">
+            <h4>Staffing Suggestions</h4>
+            <p>Get AI-powered staffing recommendations</p>
+          </div>
+        </div>
+
+        <!-- For HR -->
+        <div class="column">
+          <h3 class="column-title">For HR</h3>
+          
+          <div class="card">
+            <h4>Auto-Answer Questions</h4>
+            <p>Let AI handle common employee questions</p>
+          </div>
+
+          <div class="card">
+            <h4>Personalized Onboarding</h4>
+            <p>Guide new employees with personalized support</p>
+          </div>
+
+          <div class="card">
+            <h4>HR Insights</h4>
+            <p>View benefit enrollment trends, PTO usage, and more</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* HERO */
+  .hero {
+    padding: 6rem 0;
+    background: var(--brand-card-bg);
+  }
+
+  .hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  .hero-content {
+    max-width: 680px;
+  }
+
+  .hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: var(--brand-blue);
+  }
+
+  .hero-main {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+    font-weight: 500;
+  }
+
+  .hero-sub {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--text-medium);
+  }
+
+  .hero-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1.2rem;
+  }
+
+  /* Empty hero-image container for now */
+  .hero-image {
+    width: 0;
+    height: 0;
+  }
+
+  /* FEATURES */
+  .features {
+    background: var(--brand-background);
+    padding: 4rem 0 5rem;
+  }
+
+  .three-column-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .column-title {
+    font-size: 1.75rem;
+    color: var(--brand-blue);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .card h4 {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+  }
+
+  .card p {
+    font-size: 0.95rem;
+    color: var(--text-medium);
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .hero-image {
+      display: none;
+    }
+
+    .three-column-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

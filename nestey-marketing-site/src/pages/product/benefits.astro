@@ -3,49 +3,58 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import NavBar from "../../components/NavBar.astro";
 ---
 
-<BaseLayout title="Time Off — Nestey Product">
+<BaseLayout title="Benefits — Nestey Product">
   <NavBar />
 
   <section class="hero-section">
     <div class="container">
       <h1 class="main-heading">
-        Nestey makes time-off requests simple, automated and employee-friendly.
+        Benefits shouldn't feel overwhelming. Nestey makes them clear, simple,
+        and empowering.
       </h1>
 
       <div class="content-layout">
         <!-- Left side boxes -->
         <div class="feature-box left-top">
-          <h3>AI-Driven Conversations</h3>
-          <p>No more searching around for the right form to fill</p>
+          <h3>Conversational AI Interface</h3>
+          <p>
+            Intuitive, natural language interactions for easy benefits
+            management.
+          </p>
         </div>
 
         <div class="feature-box left-bottom">
-          <h3>You're Done!</h3>
-          <p>Your request is sent and waiting for approval</p>
+          <h3>Nestey Can Help With The Questions Everyone Has...</h3>
+          <ul>
+            <li>
+              If I want to retire at 65, how much should I save every month?
+            </li>
+            <li>Are there any other tax-free savings options?</li>
+            <li>What benefits am I not using that could save me money?</li>
+            <li>
+              Which plan gives me the best value based on my past medical spend?
+            </li>
+          </ul>
         </div>
 
         <!-- Center chat image -->
         <div class="chat-container">
-          <img
-            src="/icons/nestey-sidechat-timeoff.png"
-            alt="Nestey Chat Interface"
-          />
+          <img src="/icons/benefits-chat.png" alt="Nestey Chat Interface" />
         </div>
 
         <!-- Right side box -->
         <div class="feature-box right">
-          <h3>Say or Tell Nestey What You Need!</h3>
-          <p>Did we say no more fumbling around?</p>
+          <h3>Ask Nestey Anything About Your Benefits!</h3>
+          <p>It's never been easier to understand your benefits.</p>
         </div>
       </div>
 
       <h2 class="secondary-heading">
-        If you want to keep things classic, go for it - Nestey supports every
-        way you work.
+        Stick with what's familiar. Form-driven benefits, simplified.
       </h2>
 
       <div class="interface-image">
-        <img src="/icons/timeoff-screenshot.png" alt="Time Off Interface" />
+        <img src="/icons/benefitsScreenshot.png" alt="Benefits Interface" />
       </div>
     </div>
   </section>
@@ -77,12 +86,12 @@ import NavBar from "../../components/NavBar.astro";
     }
 
     .interface-image {
-      margin-top: 216px;
+      margin-top: 72px;
       text-align: center;
     }
 
     .interface-image img {
-      max-width: 900px;
+      max-width: 990px;
       width: 100%;
       height: auto;
       border-radius: var(--radius-md);
@@ -139,13 +148,13 @@ import NavBar from "../../components/NavBar.astro";
     }
 
     .left-top {
-      left: 0;
-      top: 80px;
+      right: 0;
+      top: 8px;
     }
 
     .left-bottom {
       left: 0;
-      bottom: calc(80px + 162px);
+      top: 1px;
     }
 
     .right {
@@ -168,8 +177,14 @@ import NavBar from "../../components/NavBar.astro";
       );
     }
 
-    .left-top::before,
+    .left-top::before {
+      left: -100px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
     .left-bottom::before {
+      display: none;
       right: -100px;
       top: 50%;
       transform: translateY(-50%);

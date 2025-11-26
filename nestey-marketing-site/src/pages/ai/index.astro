@@ -12,10 +12,12 @@ import NavBar from "../../components/NavBar.astro";
       <div class="hero-content">
         <h1>Meet Nestey AI</h1>
         <p class="hero-main">
-          Nestey AI helps employees get answers, make decisions, and take action — instantly.
+          Nestey AI helps employees get answers, make decisions, and take action
+          — instantly.
         </p>
         <p class="hero-sub">
-          Time off, benefits, pay, reviews… Nestey handles it all through natural conversation.
+          Time off, benefits, pay, reviews… Nestey handles it all through
+          natural conversation.
         </p>
 
         <div class="hero-buttons">
@@ -23,7 +25,9 @@ import NavBar from "../../components/NavBar.astro";
         </div>
       </div>
 
-      <div class="hero-image"></div>
+      <div class="hero-image">
+        <img src="/icons/nesteyAppOnPhoneClean.png" alt="Nestey AI on Mobile" />
+      </div>
     </div>
   </section>
 
@@ -36,7 +40,7 @@ import NavBar from "../../components/NavBar.astro";
         <!-- For Employees -->
         <div class="column">
           <h3 class="column-title">For Employees</h3>
-          
+
           <div class="card">
             <h4>Book Time Off</h4>
             <p>"Hey Nestey, book next Friday off."</p>
@@ -76,7 +80,7 @@ import NavBar from "../../components/NavBar.astro";
         <!-- For Managers -->
         <div class="column">
           <h3 class="column-title">For Managers</h3>
-          
+
           <div class="card">
             <h4>Approve PTO</h4>
             <p>Review and approve time off requests instantly</p>
@@ -101,7 +105,7 @@ import NavBar from "../../components/NavBar.astro";
         <!-- For HR -->
         <div class="column">
           <h3 class="column-title">For HR</h3>
-          
+
           <div class="card">
             <h4>Auto-Answer Questions</h4>
             <p>Let AI handle common employee questions</p>
@@ -138,6 +142,7 @@ import NavBar from "../../components/NavBar.astro";
 
   .hero-content {
     max-width: 680px;
+    margin-top: -20rem;
   }
 
   .hero-content h1 {
@@ -166,10 +171,15 @@ import NavBar from "../../components/NavBar.astro";
     gap: 1.2rem;
   }
 
-  /* Empty hero-image container for now */
   .hero-image {
-    width: 0;
-    height: 0;
+    max-width: 400px;
+    flex-shrink: 0;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   /* FEATURES */

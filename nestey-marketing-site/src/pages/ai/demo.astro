@@ -67,24 +67,18 @@ import NavBar from "../../components/NavBar.astro";
           <div class="suggestion-grid">
             <button
               class="suggestion-card"
-              data-prompt="How do I request time off?"
+              data-prompt="What's my PTO balance?"
             >
-              <div class="suggestion-text">Request time off</div>
+              <div class="suggestion-text">PTO Balance</div>
             </button>
-            <button
-              class="suggestion-card"
-              data-prompt="What are the company holidays?"
-            >
-              <div class="suggestion-text">Company holidays</div>
+            <button class="suggestion-card" data-prompt="Show me my benefits">
+              <div class="suggestion-text">My Benefits</div>
             </button>
-            <button
-              class="suggestion-card"
-              data-prompt="How do I update my benefits?"
-            >
-              <div class="suggestion-text">Update benefits</div>
+            <button class="suggestion-card" data-prompt="What are my goals?">
+              <div class="suggestion-text">My Goals</div>
             </button>
-            <button class="suggestion-card" data-prompt="Who is my HR contact?">
-              <div class="suggestion-text">HR contact info</div>
+            <button class="suggestion-card" data-prompt="Who is my manager?">
+              <div class="suggestion-text">My Manager</div>
             </button>
           </div>
         </div>
@@ -539,6 +533,22 @@ import NavBar from "../../components/NavBar.astro";
   ) as HTMLDivElement;
   const suggestionCards = document.querySelectorAll(".suggestion-card");
 
+  // Load employee data from JSON
+  let employeeData: any = null;
+
+  async function loadEmployeeData() {
+    try {
+      const response = await fetch("/data/demo.json");
+      employeeData = await response.json();
+      console.log("Employee data loaded:", employeeData);
+    } catch (error) {
+      console.error("Failed to load employee data:", error);
+    }
+  }
+
+  // Load data on page load
+  loadEmployeeData();
+
   // Auto-resize textarea
   chatInput.addEventListener("input", () => {
     chatInput.style.height = "auto";
@@ -630,14 +640,121 @@ import NavBar from "../../components/NavBar.astro";
   function getAIResponse(question: string): string {
     const q = question.toLowerCase();
 
-    if (q.includes("time off") || q.includes("vacation") || q.includes("pto")) {
-      return `To request time off in Nestey:<br><br>
-        1. Go to the <strong>Time Off</strong> section in your dashboard<br>
-        2. Click <strong>"Request Time Off"</strong><br>
-        3. Select your dates and time off type (vacation, sick leave, etc.)<br>
-        4. Add a note if needed<br>
-        5. Submit for approval<br><br>
-        Your manager will be notified automatically and you'll receive an update once it's reviewed. You currently have <strong>15 days</strong> of PTO remaining this year.`;
+    // If no data loaded yet
+    if (!employeeData) {
+      return `Loading your employee data... Please try again in a moment.`;
+    }
+
+    const employee = employeeData.employee;
+    const timeOff = employeeData.time_off;
+    const benefits = employeeData.benefits;
+    const goals = employeeData.goals;
+    const review = employeeData.review;
+
+    // Personal info questions
+    if (
+      q.includes("who am i") ||
+      q.includes("my name") ||
+      q.includes("my info") ||
+      q.includes("job title") ||
+      q.includes("my title") ||
+      q.includes("what do i do") ||
+      q.includes("my role")
+    ) {
+      return `You are <strong>${employee.full_name}</strong><br><br>
+        <strong>Job Title:</strong> ${employee.job_title}<br>
+        <strong>Department:</strong> ${employee.department}<br>
+        <strong>Manager:</strong> ${employee.manager.manager_name} (${employee.manager.manager_title})<br>
+        <strong>Email:</strong> ${employee.email}<br>
+        <strong>Employee ID:</strong> ${employee.employee_number}<br>
+        <strong>Hire Date:</strong> ${new Date(employee.hire_date).toLocaleDateString()}<br><br>
+        What else would you like to know?`;
+    }
+
+    // Manager questions
+    if (q.includes("who is my manager") || q.includes("my manager")) {
+      return `Your manager is <strong>${employee.manager.manager_name}</strong><br><br>
+        <strong>Title:</strong> ${employee.manager.manager_title}<br><br>
+        You can reach them through the Nestey messaging system or via email.`;
+    }
+
+    // Salary/compensation questions
+    if (
+      q.includes("salary") ||
+      q.includes("compensation") ||
+      q.includes("pay")
+    ) {
+      return `<strong>Your Compensation Details:</strong><br><br>
+        <strong>Base Salary:</strong> $${employee.base_salary.toLocaleString()}/year<br>
+        <strong>Target Bonus:</strong> ${employee.target_bonus_percent}%<br>
+        <strong>Bonus Eligible:</strong> ${employee.bonus_eligible ? "Yes" : "No"}<br>
+        <strong>Commission Eligible:</strong> ${employee.commission_eligible ? "Yes" : "No"}<br>
+        <strong>Hours Per Week:</strong> ${employee.hours_per_week}<br><br>
+        For payroll questions, contact payroll@company.com`;
+    }
+
+    // Time off questions
+    if (
+      q.includes("time off") ||
+      q.includes("vacation") ||
+      q.includes("pto") ||
+      q.includes("balance")
+    ) {
+      return `<strong>Your Time Off Balances:</strong><br><br>
+        <strong>PTO Balance:</strong> ${timeOff.pto_balance} days<br>
+        <strong>Sick Leave:</strong> ${timeOff.sick_balance} days<br><br>
+        <strong>2025 Accruals:</strong><br>
+        ${timeOff.accruals.map((a: any) => `• ${a.type}: ${a.accrued} days accrued, ${a.used} used, ${a.remaining} remaining`).join("<br>")}<br><br>
+        To request time off, click the "Time Off" section in your dashboard or just tell me the dates you need!`;
+    }
+
+    // Benefits questions
+    if (
+      q.includes("benefit") ||
+      q.includes("insurance") ||
+      q.includes("medical") ||
+      q.includes("dental") ||
+      q.includes("vision")
+    ) {
+      const benefitsList = benefits
+        .map(
+          (b: any) =>
+            `<strong>${b.type}:</strong> ${b.plan_name}<br>
+        Coverage: ${b.coverage_level} | You pay: $${b.employee_pays}/mo | Employer pays: $${b.employer_pays}/mo | Dependents: ${b.dependents}`
+        )
+        .join("<br><br>");
+
+      return `<strong>Your Current Benefits:</strong><br><br>${benefitsList}<br><br>
+        Total monthly cost to you: $${benefits.reduce((sum: number, b: any) => sum + b.employee_pays, 0)}<br><br>
+        Need to make changes? Contact benefits@company.com or wait for open enrollment in November.`;
+    }
+
+    // Goals questions
+    if (q.includes("goal") || q.includes("objective")) {
+      const goalsList = goals
+        .map(
+          (g: any, i: number) =>
+            `<strong>${i + 1}. ${g.objective}</strong><br>
+        ${g.description}<br>
+        Strategy: ${g.strategy} | Your Rating: ${g.employee_rating}/5 | Manager Rating: ${g.manager_rating}/5 | Due: ${new Date(g.target_date).toLocaleDateString()}`
+        )
+        .join("<br><br>");
+
+      return `<strong>Your Goals for ${review.review_cycle}:</strong><br><br>${goalsList}<br><br>
+        Keep up the great work! Update your progress in the Goals section.`;
+    }
+
+    // Review questions
+    if (q.includes("review") || q.includes("performance")) {
+      return `<strong>Your Performance Review:</strong><br><br>
+        <strong>Review Cycle:</strong> ${review.review_cycle}<br>
+        <strong>Status:</strong> ${review.status}<br>
+        <strong>Phase:</strong> ${review.phase}<br>
+        <strong>Your Self-Rating:</strong> ${review.employee_rating}/5<br>
+        <strong>Manager Rating:</strong> ${review.manager_rating}/5<br><br>
+        <strong>Your Comments:</strong><br>${review.employee_comments}<br><br>
+        <strong>Manager Comments:</strong><br>${review.manager_comments}<br><br>
+        You're doing great! Keep building on your strengths.`;
     }
 
     if (q.includes("holiday") || q.includes("holidays")) {
@@ -651,15 +768,6 @@ import NavBar from "../../components/NavBar.astro";
         All offices will be closed on these dates. These are paid holidays for full-time employees.`;
     }
 
-    if (q.includes("benefit") || q.includes("benefits")) {
-      return `You can update your benefits through Nestey:<br><br>
-        1. Navigate to <strong>My Benefits</strong> in the main menu<br>
-        2. Review your current elections<br>
-        3. Click <strong>"Make Changes"</strong><br>
-        4. Update your selections<br><br>
-        Note: Benefits changes outside of open enrollment require a qualifying life event (marriage, birth of child, etc.). Open enrollment period is typically in November. Need help? Contact benefits@company.com`;
-    }
-
     if (q.includes("hr contact") || q.includes("hr team")) {
       return `Your HR contacts are:<br><br>
         <strong>Primary HR Business Partner:</strong><br>
@@ -671,13 +779,13 @@ import NavBar from "../../components/NavBar.astro";
         You can also reach the HR team through the Help Center in Nestey or by calling (555) 123-4567.`;
     }
 
-    return `I'm here to help with your HR questions! I can assist with:<br><br>
-      • Time off requests and PTO balances<br>
-      • Benefits information and enrollment<br>
-      • Company policies and procedures<br>
-      • Payroll and compensation questions<br>
-      • Contact information for HR team<br>
-      • Onboarding and training resources<br><br>
+    // Default response
+    return `Hi ${employee.first_name}! I'm here to help with your HR questions. I can assist with:<br><br>
+      • Your personal info, manager, and compensation<br>
+      • Time off balances and requests (you have ${timeOff.pto_balance} PTO days)<br>
+      • Benefits information (Medical, Dental, Vision)<br>
+      • Your goals and performance review<br>
+      • Company policies and HR contacts<br><br>
       What would you like to know more about?`;
   }
 </script>

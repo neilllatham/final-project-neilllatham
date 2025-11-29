@@ -1,0 +1,136 @@
+{
+  "employee": {
+    "employee_id": 301,
+    "employee_number": "EMP00000301",
+    "first_name": "Nader",
+    "last_name": "Logos",
+    "full_name": "Nader Logos",
+    "preferred_name": "Nader Logos",
+    "email": "nader.logos@nestey.co",
+    "job_title": "Chief Customer Officier",
+    "department": "Customer Service",
+    "function": "Customer Success",
+    "role": "Director of Customer Service",
+    "role_level": "Senior Manager / Director",
+    "hire_date": "2020-03-11",
+    "status": "active",
+    "employment_type": "Full-time",
+    "gender": "Male",
+    "date_of_birth": "1994-10-25",
+    "mobile_number": "1-212-458-9342",
+    "home_address": "2343 E Camden Street, Longbeach, NC 19714",
+    "base_salary": 310000,
+    "target_bonus_percent": 4.10,
+    "bonus_eligible": true,
+    "commission_eligible": false,
+    "hours_per_week": 40,
+    "manager": {
+      "manager_id": 1,
+      "manager_name": "Amanda Thompson",
+      "manager_title": "Chief Executive Officier"
+    }
+  },
+
+  "time_off": {
+    "pto_balance": 14.6,
+    "sick_balance": 5.0,
+    "accruals": [
+      {
+        "type": "PTO",
+        "accrued": 14.6,
+        "used": 0,
+        "remaining": 14.6,
+        "year": 2025
+      },
+      {
+        "type": "Sick Leave",
+        "accrued": 5.0,
+        "used": 0,
+        "remaining": 5.0,
+        "year": 2025
+      }
+    ],
+    "requests": []
+  },
+
+  "benefits": [
+    {
+      "plan_name": "Blue Cross PPO Silver",
+      "type": "Medical",
+      "coverage_level": "Silver",
+      "employee_pays": 150,
+      "employer_pays": 450,
+      "dependents": 2
+    },
+    {
+      "plan_name": "VSP Vision Premier",
+      "type": "Vision",
+      "coverage_level": "Gold",
+      "employee_pays": 2,
+      "employer_pays": 8,
+      "dependents": 3
+    },
+    {
+      "plan_name": "Delta Dental PPO Premium",
+      "type": "Dental",
+      "coverage_level": "Gold",
+      "employee_pays": 5,
+      "employer_pays": 15,
+      "dependents": 3
+    }
+  ],
+
+  "review": {
+    "review_cycle": "FY2025 Annual",
+    "status": "Draft",
+    "phase": "end-of-year",
+    "employee_rating": 4,
+    "manager_rating": 4,
+    "employee_comments": "This year, I led my team to make strong progress across customer, people, and revenue objectives, including improving customer-experience foundations and helping expand into the small-business segment. We also advanced employee-engagement efforts and delivered automation that reduced costs and improved margins. The team's work shows clear momentum and strong impact.",
+    "manager_comments": "You showed strong leadership this year and guided your team to real progress, especially in customer experience, employee engagement, and market expansion. Your ability to collaborate and move initiatives forward stood out. To elevate your impact further, there is an opportunity to deepen and scale operational-efficiency improvements across more teams and processes."
+  },
+
+  "goals": [
+    {
+      "objective": "Improve employee engagement",
+      "description": "Implement quarterly feedback surveys and increase employee engagement by 10%. Increase retention of top performers by 20%",
+      "strategy": "People",
+      "employee_rating": 3,
+      "manager_rating": 4,
+      "target_date": "2025-12-31"
+    },
+    {
+      "objective": "Increase revenue by expanding into new small business segment.",
+      "description": "Launch existing mid market products into small business sector to expand into new market segments. Add 5% revenue growth as a result of market expansion.",
+      "strategy": "Shareholder",
+      "employee_rating": 4,
+      "manager_rating": 4,
+      "target_date": "2025-12-31"
+    },
+    {
+      "objective": "Drive operational efficiency",
+      "description": "Reduce operating cost per transaction to $5.00 through automation initiatives. Improving overall margin by 15%.",
+      "strategy": "Shareholder",
+      "employee_rating": 3,
+      "manager_rating": 3,
+      "target_date": "2025-12-31"
+    },
+    {
+      "objective": "Enhance customer experience",
+      "description": "Achieve a 40% increase in Net Promotor Score (NPS) by end of FY26",
+      "strategy": "Customer",
+      "employee_rating": 2,
+      "manager_rating": 2,
+      "target_date": "2025-12-30"
+    }
+  ],
+
+  "competencies": [
+    "Communication",
+    "Collaboration / Teamwork",
+    "Accountability / Ownership",
+    "Problem Solving / Critical Thinking",
+    "Adaptability / Learning Agility",
+    "Innovation / Creativity"
+  ]
+}

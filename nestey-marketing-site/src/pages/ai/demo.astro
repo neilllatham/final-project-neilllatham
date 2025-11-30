@@ -672,7 +672,10 @@ import NavBar from "../../components/NavBar.astro";
     }
 
     // Manager questions (but not about goals)
-    if ((q.includes("who is my manager") || q.includes("my manager")) && !q.includes("goal")) {
+    if (
+      (q.includes("who is my manager") || q.includes("my manager")) &&
+      !q.includes("goal")
+    ) {
       return `Your manager is <strong>${employee.manager.manager_name}</strong><br><br>
         <strong>Title:</strong> ${employee.manager.manager_title}<br><br>
         You can reach them through the Nestey messaging system or via email.`;

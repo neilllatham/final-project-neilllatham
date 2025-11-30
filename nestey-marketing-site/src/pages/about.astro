@@ -1,0 +1,232 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import NavBar from "../components/NavBar.astro";
+---
+
+<BaseLayout title="About Nestey">
+  <NavBar />
+
+  <section class="about-content">
+    <div class="container">
+      <div class="content-wrapper">
+        <p class="lead">
+          Nestey was born from a simple belief:<br /><strong
+            >work should feel human.</strong
+          >
+        </p>
+
+        <p>
+          For years, I led large transformation programs and watched employees
+          struggle with systems that were supposed to help them. People were
+          overwhelmed by benefits they didn't understand, lost in HR portals
+          that felt like relics, and unsure where to turn for clear answers.
+          Even the most capable employees often felt alone navigating decisions
+          that impact their careers, finances, health, and families.
+        </p>
+
+        <p>I knew there had to be a better way.</p>
+
+        <p>
+          Nestey started as a personal mission — a desire to build something
+          that felt warm, intuitive, and genuinely supportive. A tool built for
+          people, not processes. A modern HR experience that answers real
+          questions in real time, the way a trusted advisor would.
+        </p>
+
+        <p class="emphasis">But Nestey became more than that.</p>
+
+        <div class="highlight-section">
+          <p>It became a place where technology meets empathy.</p>
+          <p>
+            Where employees can simply ask, "What should I do next?" and get
+            clear, personalized guidance.
+          </p>
+          <p>Where HR teams can focus on people instead of processes.</p>
+          <p>
+            Where every interaction feels effortless — like talking to someone
+            who already understands your world.
+          </p>
+        </div>
+
+        <p class="emphasis">
+          Nestey is designed to be the HR experience we all wish existed:
+        </p>
+
+        <ul class="values-list">
+          <li>conversational</li>
+          <li>intelligent</li>
+          <li>proactive</li>
+          <li>deeply personalized</li>
+          <li>and beautifully simple</li>
+        </ul>
+
+        <p>
+          It helps employees make confident decisions about their time off,
+          benefits, goals, performance, and career. And it gives organizations a
+          modern platform that finally brings clarity, consistency, and calm to
+          the HR ecosystem.
+        </p>
+
+        <p>
+          I didn't build Nestey to compete with anyone.<br />
+          I built it because employees deserve better — and because the future of
+          work demands tools that lift people up instead of wearing them down.
+        </p>
+
+        <div class="closing-section">
+          <p>Nestey is your workplace companion.</p>
+          <p>Your guide.</p>
+          <p>Your "what's next" coach.</p>
+          <p>Your safe place to ask anything.</p>
+        </div>
+
+        <p class="emphasis">
+          This is HR, reimagined for the world we live in today — and the one
+          we're building tomorrow.
+        </p>
+
+        <p class="welcome">Welcome to Nestey.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-content {
+    background: var(--brand-background);
+    padding: 5rem 0 6rem;
+  }
+
+  .content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .content-wrapper p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--brand-blue);
+    margin-bottom: 1.5rem;
+  }
+
+  .lead {
+    font-size: 2.5rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 2.5rem !important;
+    color: var(--brand-blue) !important;
+  }
+
+  .lead strong {
+    font-weight: 600;
+  }
+
+  .emphasis {
+    font-size: 1.25rem !important;
+    font-weight: 500;
+    color: var(--brand-blue) !important;
+    margin-top: 2.5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .highlight-section {
+    background: white;
+    border-left: 4px solid var(--brand-blue);
+    padding: 2rem 2.5rem;
+    margin: 2.5rem 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .highlight-section p {
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--brand-blue);
+  }
+
+  .highlight-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .values-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 2.5rem 2rem;
+  }
+
+  .values-list li {
+    font-size: 1.25rem;
+    line-height: 2;
+    color: var(--brand-blue);
+    font-weight: 500;
+    position: relative;
+  }
+
+  .values-list li::before {
+    content: "•";
+    position: absolute;
+    left: -1.5rem;
+    color: var(--brand-blue);
+    font-weight: 600;
+  }
+
+  .closing-section {
+    background: white;
+    border-left: 4px solid var(--brand-blue);
+    padding: 2rem 2.5rem;
+    margin: 2.5rem 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .closing-section p {
+    margin-bottom: 0.75rem;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--brand-blue);
+  }
+
+  .closing-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .welcome {
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    color: var(--brand-blue) !important;
+    text-align: center;
+    margin-top: 3rem !important;
+    margin-bottom: 0 !important;
+  }
+
+  @media (max-width: 768px) {
+    .about-hero h1 {
+      font-size: 2rem;
+    }
+
+    .about-content {
+      padding: 3rem 0 4rem;
+    }
+
+    .content-wrapper {
+      padding: 0 1.5rem;
+    }
+
+    .lead {
+      font-size: 1.25rem !important;
+    }
+
+    .content-wrapper p {
+      font-size: 1rem;
+    }
+
+    .highlight-section,
+    .closing-section {
+      padding: 1.5rem;
+    }
+
+    .values-list {
+      margin-left: 1.5rem;
+    }
+  }
+</style>

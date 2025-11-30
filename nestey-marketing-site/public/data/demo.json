@@ -132,5 +132,38 @@
     "Problem Solving / Critical Thinking",
     "Adaptability / Learning Agility",
     "Innovation / Creativity"
+  ],
+
+  "manager_goals": [
+    {
+      "goal_id": 13,
+      "objective": "Transform the customer experience",
+      "description": "Deliver a unified customer experience strategy across all business units, targeting a 20% improvement in Net Promoter Score (NPS) and faster digital adoption.",
+      "target_date": "2025-12-31",
+      "status": "active",
+      "strategy": "Customer",
+      "strategy_description": "Improve customer satisfaction and experience",
+      "review_cycle": "FY2025 Annual"
+    },
+    {
+      "goal_id": 14,
+      "objective": "Elevate employee engagement and culture",
+      "description": "Achieve top-quartile employee engagement by launching the \"One Company\" culture initiative and increasing retention among top performers by 15%.",
+      "target_date": "2025-12-31",
+      "status": "active",
+      "strategy": "People",
+      "strategy_description": "Engage and develop employees",
+      "review_cycle": "FY2025 Annual"
+    },
+    {
+      "goal_id": 15,
+      "objective": "Enhance enterprise value through innovation and efficiency",
+      "description": "Drive 10% EBITDA growth and 12% revenue growth by scaling automation, optimizing cost structure, and expanding into two new market segments.",
+      "target_date": "2025-12-31",
+      "status": "active",
+      "strategy": "Shareholder",
+      "strategy_description": "Grow revenue and enhance profitability",
+      "review_cycle": "FY2025 Annual"
+    }
   ]
 }

@@ -671,8 +671,8 @@ import NavBar from "../../components/NavBar.astro";
         What else would you like to know?`;
     }
 
-    // Manager questions
-    if (q.includes("who is my manager") || q.includes("my manager")) {
+    // Manager questions (but not about goals)
+    if ((q.includes("who is my manager") || q.includes("my manager")) && !q.includes("goal")) {
       return `Your manager is <strong>${employee.manager.manager_name}</strong><br><br>
         <strong>Title:</strong> ${employee.manager.manager_title}<br><br>
         You can reach them through the Nestey messaging system or via email.`;
@@ -731,6 +731,28 @@ import NavBar from "../../components/NavBar.astro";
 
     // Goals questions
     if (q.includes("goal") || q.includes("objective")) {
+      // Check if asking about manager's goals
+      if (
+        q.includes("manager") ||
+        q.includes("boss") ||
+        q.includes("amanda") ||
+        q.includes("ceo")
+      ) {
+        const managerGoals = employeeData.manager_goals;
+        const managerGoalsList = managerGoals
+          .map(
+            (g: any, i: number) =>
+              `<strong>${i + 1}. ${g.objective}</strong><br>
+          ${g.description}<br>
+          Strategy: ${g.strategy} (${g.strategy_description}) | Status: ${g.status} | Due: ${new Date(g.target_date).toLocaleDateString()}`
+          )
+          .join("<br><br>");
+
+        return `<strong>${employee.manager.manager_name}'s Goals for ${managerGoals[0].review_cycle}:</strong><br><br>${managerGoalsList}<br><br>
+          These are the strategic priorities your manager is focused on this year.`;
+      }
+
+      // Employee's own goals
       const goalsList = goals
         .map(
           (g: any, i: number) =>

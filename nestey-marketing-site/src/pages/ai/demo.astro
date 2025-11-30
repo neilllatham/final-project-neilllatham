@@ -77,8 +77,8 @@ import NavBar from "../../components/NavBar.astro";
             <button class="suggestion-card" data-prompt="What are my goals?">
               <div class="suggestion-text">My Goals</div>
             </button>
-            <button class="suggestion-card" data-prompt="Who is my manager?">
-              <div class="suggestion-text">My Manager</div>
+            <button class="suggestion-card" data-prompt="How much should I save for retirement?">
+              <div class="suggestion-text">My Retirement</div>
             </button>
           </div>
         </div>
@@ -802,6 +802,118 @@ import NavBar from "../../components/NavBar.astro";
         <strong>Payroll Questions:</strong><br>
         payroll@company.com<br><br>
         You can also reach the HR team through the Help Center in Nestey or by calling (555) 123-4567.`;
+    }
+
+    // Retirement planning questions
+    if (
+      q.includes("retire") ||
+      q.includes("retirement") ||
+      q.includes("saving") ||
+      (q.includes("enough money") && q.includes("retire"))
+    ) {
+      // Calculate age
+      const birthDate = new Date(employee.date_of_birth);
+      const today = new Date();
+      const currentAge = today.getFullYear() - birthDate.getFullYear();
+
+      // Check if they're providing retirement details (age and monthly spending)
+      const retireAtMatch = q.match(
+        /retire at (\d+)|(\d+) and spend|age (\d+)/
+      );
+      const monthlyMatch = q.match(
+        /\$?([\d,]+)(?:\/month| per month| a month| month)/
+      );
+
+      if (retireAtMatch && monthlyMatch) {
+        const retireAge = parseInt(
+          retireAtMatch[1] || retireAtMatch[2] || retireAtMatch[3]
+        );
+        const monthlySpending = parseInt(monthlyMatch[1].replace(/,/g, ""));
+
+        // Constants
+        const INFLATION_RATE = 0.03;
+        const RETURN_RATE = 0.07;
+        const SS_MONTHLY = 2000;
+        const LIFE_EXPECTANCY = 100;
+
+        // Calculations
+        const yearsToRetirement = retireAge - currentAge;
+        const yearsInRetirement = LIFE_EXPECTANCY - retireAge;
+
+        // Adjust monthly need for Social Security
+        const monthlyNeedFromSavings = Math.max(
+          0,
+          monthlySpending - SS_MONTHLY
+        );
+
+        // Future value of current savings at retirement
+        const futureValueCurrentSavings =
+          employee.retirement_savings *
+          Math.pow(1 + RETURN_RATE, yearsToRetirement);
+
+        // Total needed at retirement (present value of retirement spending)
+        // Using present value of annuity formula adjusted for inflation
+        const realReturnRate = (1 + RETURN_RATE) / (1 + INFLATION_RATE) - 1;
+        const totalNeededAtRetirement =
+          monthlyNeedFromSavings *
+          12 *
+          ((1 - Math.pow(1 + realReturnRate, -yearsInRetirement)) /
+            realReturnRate);
+
+        // Gap to fill
+        const gapToFill = Math.max(
+          0,
+          totalNeededAtRetirement - futureValueCurrentSavings
+        );
+
+        // Monthly savings needed (future value of annuity)
+        const monthlySavingsNeeded =
+          (gapToFill * (RETURN_RATE / 12)) /
+          (Math.pow(1 + RETURN_RATE / 12, yearsToRetirement * 12) - 1);
+
+        const percentOfSalary = (
+          ((monthlySavingsNeeded * 12) / employee.base_salary) *
+          100
+        ).toFixed(1);
+
+        return `<strong>🎯 Your Retirement Savings Plan</strong><br><br>
+          <strong>Your Goals:</strong><br>
+          • Retire at age <strong>${retireAge}</strong> (in ${yearsToRetirement} years)<br>
+          • Spend <strong>$${monthlySpending.toLocaleString()}/month</strong> in retirement (today's dollars)<br>
+          • Plan for retirement until age 100 (${yearsInRetirement} years)<br><br>
+          
+          <strong>Some things I assumed (I kept things conservative):</strong><br>
+          • Social Security will cover ~$${SS_MONTHLY.toLocaleString()}/month<br>
+          • Your 401k will grow at 7%<br>
+          • Inflation will be 3%<br><br>
+          
+          <strong>Here's the Math:</strong><br>
+          • You'll need <strong>$${monthlyNeedFromSavings.toLocaleString()}/month</strong> from savings<br>
+          • Your current $${employee.retirement_savings.toLocaleString()} will grow to <strong>$${Math.round(futureValueCurrentSavings).toLocaleString()}</strong> by retirement<br>
+          • You'll need <strong>$${Math.round(totalNeededAtRetirement).toLocaleString()}</strong> total at retirement<br><br>
+          
+          <strong>💰 What You Need to Do:</strong><br>
+          Save <strong>$${Math.round(monthlySavingsNeeded).toLocaleString()} per month</strong><br>
+          (That's about <strong>${percentOfSalary}%</strong> of your current salary)<br><br>
+          
+          <strong>💡 Tips:</strong><br>
+          • Max out your 401(k) employer match first (free money!)<br>
+          • Consider increasing contributions by 1% each year<br>
+          • These calculations assume 7% annual returns and 3% inflation<br><br>
+          
+          Want to adjust your retirement age or spending? Just ask!`;
+      }
+
+      // Initial retirement question response
+      return `<strong>Let's plan your retirement, ${employee.first_name}!</strong><br><br>
+        I can help you figure out how much to save. Here's what I know about you:<br><br>
+        • <strong>Current Retirement Savings:</strong> $${employee.retirement_savings.toLocaleString()}<br><br>
+        <strong>To calculate your retirement savings target, I need to know:</strong><br><br>
+        1️⃣ <strong>What age do you want to retire?</strong> (Most people retire at 65)<br>
+        2️⃣ <strong>How much do you want to spend per month in retirement?</strong> (in today's dollars)<br><br>
+        💡 <strong>Tip:</strong> If you're comfortable with your current lifestyle, just estimate what you spend today on living expenses.<br><br>
+        For example, you could say: <em>"I want to retire at 65 and spend $8,000 per month"</em><br><br>
+        Once you tell me, I'll calculate exactly how much you should save each month to reach your goal! 🎯`;
     }
 
     // Default response

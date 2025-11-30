@@ -24,6 +24,7 @@
     "bonus_eligible": true,
     "commission_eligible": false,
     "hours_per_week": 40,
+    "retirement_savings": 80000,
     "manager": {
       "manager_id": 1,
       "manager_name": "Amanda Thompson",

@@ -9,6 +9,40 @@ import NavBar from "../components/NavBar.astro";
   <!-- HERO SECTION -->
   <section class="hero">
     <div class="container hero-inner">
+      <!-- Demo Form (hidden by default) -->
+      <div class="demo-form-container" id="demoForm">
+        <h2>Book a Demo</h2>
+        <form class="demo-form">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" required />
+          </div>
+          
+          <button type="submit" class="btn">Submit</button>
+          <button type="button" class="btn btn-secondary" id="closeForm">Cancel</button>
+        </form>
+      </div>
+
       <div class="hero-content">
         <h1>HR, reinvented for the modern workforce.</h1>
         <p>
@@ -17,7 +51,7 @@ import NavBar from "../components/NavBar.astro";
         </p>
 
         <div class="hero-buttons">
-          <a class="btn" href="/demo">Book a Demo</a>
+          <button class="btn" id="bookDemoBtn">Book a Demo</button>
           <a class="btn" href="/ai/demo">Try Nestey AI</a>
         </div>
       </div>
@@ -96,6 +130,82 @@ import NavBar from "../components/NavBar.astro";
     height: 0;
   }
 
+  /* DEMO FORM */
+  .demo-form-container {
+    display: none;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+    width: 100%;
+  }
+
+  .demo-form-container.active {
+    display: block;
+    animation: slideIn 0.3s ease-out;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .demo-form-container h2 {
+    color: var(--brand-blue);
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+  }
+
+  .demo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group label {
+    font-weight: 600;
+    color: var(--brand-blue);
+    font-size: 0.95rem;
+  }
+
+  .form-group input {
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus {
+    outline: none;
+    border-color: var(--brand-blue);
+  }
+
+  .demo-form button {
+    margin-top: 0.5rem;
+  }
+
+  .btn-secondary {
+    background: #6c757d;
+  }
+
+  .btn-secondary:hover {
+    background: #5a6268;
+  }
+
   /* FEATURES */
   .features {
     background: var(--brand-background);
@@ -124,3 +234,28 @@ import NavBar from "../components/NavBar.astro";
     }
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const bookDemoBtn = document.getElementById('bookDemoBtn');
+    const closeFormBtn = document.getElementById('closeForm');
+    const demoForm = document.getElementById('demoForm');
+    const form = demoForm?.querySelector('form');
+
+    bookDemoBtn?.addEventListener('click', () => {
+      demoForm?.classList.add('active');
+    });
+
+    closeFormBtn?.addEventListener('click', () => {
+      demoForm?.classList.remove('active');
+      form?.reset();
+    });
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you! We will contact you soon to schedule your demo.');
+      demoForm?.classList.remove('active');
+      form.reset();
+    });
+  });
+</script>

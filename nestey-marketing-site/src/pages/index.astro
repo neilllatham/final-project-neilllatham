@@ -17,29 +17,31 @@ import NavBar from "../components/NavBar.astro";
             <label for="firstName">First Name</label>
             <input type="text" id="firstName" name="firstName" required />
           </div>
-          
+
           <div class="form-group">
             <label for="lastName">Last Name</label>
             <input type="text" id="lastName" name="lastName" required />
           </div>
-          
+
           <div class="form-group">
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" required />
           </div>
-          
+
           <div class="form-group">
             <label for="phone">Phone</label>
             <input type="tel" id="phone" name="phone" required />
           </div>
-          
+
           <div class="form-group">
             <label for="company">Company</label>
             <input type="text" id="company" name="company" required />
           </div>
-          
+
           <button type="submit" class="btn">Submit</button>
-          <button type="button" class="btn btn-secondary" id="closeForm">Cancel</button>
+          <button type="button" class="btn btn-secondary" id="closeForm"
+            >Cancel</button
+          >
         </form>
       </div>
 
@@ -236,25 +238,25 @@ import NavBar from "../components/NavBar.astro";
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const bookDemoBtn = document.getElementById('bookDemoBtn');
-    const closeFormBtn = document.getElementById('closeForm');
-    const demoForm = document.getElementById('demoForm');
-    const form = demoForm?.querySelector('form');
+  document.addEventListener("DOMContentLoaded", () => {
+    const bookDemoBtn = document.getElementById("bookDemoBtn");
+    const closeFormBtn = document.getElementById("closeForm");
+    const demoForm = document.getElementById("demoForm");
+    const form = demoForm?.querySelector("form");
 
-    bookDemoBtn?.addEventListener('click', () => {
-      demoForm?.classList.add('active');
+    bookDemoBtn?.addEventListener("click", () => {
+      demoForm?.classList.add("active");
     });
 
-    closeFormBtn?.addEventListener('click', () => {
-      demoForm?.classList.remove('active');
+    closeFormBtn?.addEventListener("click", () => {
+      demoForm?.classList.remove("active");
       form?.reset();
     });
 
-    form?.addEventListener('submit', (e) => {
+    form?.addEventListener("submit", (e) => {
       e.preventDefault();
-      alert('Thank you! We will contact you soon to schedule your demo.');
-      demoForm?.classList.remove('active');
+      alert("Thank you! We will contact you soon to schedule your demo.");
+      demoForm?.classList.remove("active");
       form.reset();
     });
   });

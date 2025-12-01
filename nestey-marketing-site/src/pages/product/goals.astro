@@ -1,0 +1,147 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import NavBar from "../../components/NavBar.astro";
+---
+
+<BaseLayout title="Goals and Reviews — Nestey Product">
+  <NavBar />
+
+  <section class="hero-section">
+    <div class="container">
+      <h1 class="main-heading">
+        Nestey connects every goal, so the whole team moves as one.
+      </h1>
+
+      <p class="subheading">
+        People feel confident when they know where they're going — and how their work matters.
+        Nestey gives every employee a clear path, and every leader real organizational alignment.
+      </p>
+
+      <div class="content-layout">
+        <div class="feature-card">
+          <h3>Managers goals are visible</h3>
+          <p>so employees can connect the dots and see what goals they will need to set to be aligned.</p>
+        </div>
+
+        <div class="goals-image">
+          <img src="/icons/managerGoals.png" alt="Manager Goals" />
+        </div>
+      </div>
+
+      <div class="content-layout" style="margin-top: 216px;">
+        <div class="feature-card">
+          <h3>Employee goals are directly connected their managers goals!</h3>
+          <p>No more guessing about what your goals should be, or if you are focused on the right area.</p>
+        </div>
+
+        <div class="goals-image">
+          <img src="/icons/employeeGoals.png" alt="Employee Goals" />
+        </div>
+      </div>
+
+      <div class="content-layout" style="margin-top: 144px;">
+        <div class="feature-card">
+          <h3>Ratings</h3>
+          <p>Ratings are clear with a side by side view</p>
+        </div>
+
+        <div class="goals-image">
+          <img src="/icons/ratingsComments.png" alt="Ratings and Comments" />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section {
+    padding: 3rem 0 5rem;
+    background: var(--brand-background);
+  }
+
+  .main-heading {
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--brand-blue);
+    max-width: 1100px;
+    margin: 0 auto 2.025rem;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+
+  .subheading {
+    font-size: 1.5rem;
+    text-align: center;
+    color: var(--brand-blue);
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .content-layout {
+    margin-top: 144px;
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .feature-card {
+    flex: 0 0 175px;
+    background: white;
+    border: 2px solid #d0d0d0;
+    border-radius: 12px;
+    padding: 1.75rem 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .feature-card h3 {
+    font-size: 1.35rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .feature-card p {
+    font-size: 1rem;
+    color: var(--text-medium);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .goals-image {
+    flex: 1;
+    text-align: center;
+  }
+
+  .goals-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    .main-heading {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .subheading {
+      font-size: 1.2rem;
+    }
+
+    .content-layout {
+      flex-direction: column;
+      margin-top: 3rem;
+    }
+
+    .feature-card {
+      flex: 1;
+    }
+  }
+</style>

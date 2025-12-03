@@ -1,0 +1,126 @@
+---
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <!-- Left: Logo and tagline -->
+    <div class="footer-brand">
+      <div class="footer-logo">Nestey</div>
+      <p class="footer-tagline">A simpler, smarter HR experience</p>
+    </div>
+
+    <!-- Center: Navigation links -->
+    <nav class="footer-nav">
+      <a href="/">Home</a>
+      <a href="/product/time-off">Product</a>
+      <a href="/product/time-off">Time Off</a>
+      <a href="/product/benefits">Benefits</a>
+      <a href="/product/goals">Goals</a>
+      <a href="/product/org-chart">Org Chart</a>
+      <a href="/ai">AI</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+
+    <!-- Right: Legal and contact -->
+    <div class="footer-legal">
+      <div class="footer-copyright">© 2025 Nestey</div>
+      <a href="mailto:hello@nestey.co">hello@nestey.co</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--brand-blue);
+    color: var(--text-light);
+    padding: 3rem 0 2rem;
+    margin-top: auto;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  /* Left: Brand */
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-light);
+  }
+
+  .footer-tagline {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+  }
+
+  /* Center: Navigation */
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer-nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: opacity 0.2s;
+  }
+
+  .footer-nav a:hover {
+    opacity: 0.7;
+  }
+
+  /* Right: Legal */
+  .footer-legal {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+    font-size: 0.9rem;
+  }
+
+  .footer-legal a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .footer-legal a:hover {
+    opacity: 0.7;
+  }
+
+  .footer-copyright {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .footer-nav {
+      justify-content: center;
+    }
+
+    .footer-legal {
+      align-items: center;
+    }
+  }
+</style>

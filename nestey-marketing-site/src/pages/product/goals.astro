@@ -18,43 +18,16 @@ import NavBar from "../../components/NavBar.astro";
         real organizational alignment.
       </p>
 
-      <div class="content-layout">
-        <div class="feature-card">
-          <h3>Managers goals are visible</h3>
-          <p>
-            so employees can connect the dots and see what goals they will need
-            to set to be aligned.
-          </p>
-        </div>
-
-        <div class="goals-image">
-          <img src="/icons/managerGoals.png" alt="Manager Goals" />
-        </div>
+      <div class="top-goals-section">
+        <img src="/icons/topGoals.png" alt="Goals Overview" class="top-goals-image" />
       </div>
 
-      <div class="content-layout" style="margin-top: 216px;">
-        <div class="feature-card">
-          <h3>Employee goals are directly connected their managers goals!</h3>
-          <p>
-            No more guessing about what your goals should be, or if you are
-            focused on the right area.
-          </p>
-        </div>
-
-        <div class="goals-image">
-          <img src="/icons/employeeGoals.png" alt="Employee Goals" />
-        </div>
+      <div class="middle-goals-section">
+        <img src="/icons/middleGoals.png" alt="Employee Goals" class="middle-goals-image" />
       </div>
 
-      <div class="content-layout" style="margin-top: 144px;">
-        <div class="feature-card">
-          <h3>Ratings</h3>
-          <p>Ratings are clear with a side by side view</p>
-        </div>
-
-        <div class="goals-image">
-          <img src="/icons/ratingsComments.png" alt="Ratings and Comments" />
-        </div>
+      <div class="bottom-goals-section">
+        <img src="/icons/bottomGoals.png" alt="Ratings and Reviews" class="bottom-goals-image" />
       </div>
     </div>
   </section>
@@ -84,6 +57,48 @@ import NavBar from "../../components/NavBar.astro";
     margin: 0 auto;
     line-height: 1.5;
     font-weight: 400;
+  }
+
+  .top-goals-section {
+    margin-top: 144px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .top-goals-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .middle-goals-section {
+    margin-top: 216px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .middle-goals-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .bottom-goals-section {
+    margin-top: 144px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .bottom-goals-image {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   .content-layout {

@@ -13,30 +13,7 @@ import NavBar from "../../components/NavBar.astro";
       </h1>
 
       <div class="content-layout">
-        <!-- Left side boxes -->
-        <div class="feature-box left-top">
-          <h3>AI-Driven Conversations</h3>
-          <p>No more searching around for the right form to fill</p>
-        </div>
-
-        <div class="feature-box left-bottom">
-          <h3>You're Done!</h3>
-          <p>Your request is sent and waiting for approval</p>
-        </div>
-
-        <!-- Center chat image -->
-        <div class="chat-container">
-          <img
-            src="/icons/nestey-sidechat-timeoff.png"
-            alt="Nestey Chat Interface"
-          />
-        </div>
-
-        <!-- Right side box -->
-        <div class="feature-box right">
-          <h3>Say or Tell Nestey What You Need!</h3>
-          <p>Did we say no more fumbling around?</p>
-        </div>
+        <img src="/icons/fullTimeOff.png" alt="Nestey Time Off Interface" class="full-timeoff-image" />
       </div>
 
       <h2 class="secondary-heading">
@@ -90,123 +67,16 @@ import NavBar from "../../components/NavBar.astro";
     }
 
     .content-layout {
-      position: relative;
-      max-width: 1400px;
+      max-width: 1200px;
       margin: 0 auto;
-      min-height: 700px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      text-align: center;
     }
 
-    .chat-container {
-      position: relative;
-      z-index: 1;
-      max-width: 380px;
-    }
-
-    .chat-container img {
+    .full-timeoff-image {
       width: 100%;
       height: auto;
       display: block;
-      border-radius: var(--radius-md);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    }
-
-    .feature-box {
-      position: absolute;
-      background: white;
-      border: 2px solid #d0d0d0;
-      border-radius: 12px;
-      padding: 1.75rem 2rem;
-      max-width: 300px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .feature-box h3 {
-      font-size: 1.35rem;
-      color: var(--text-dark);
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-      line-height: 1.3;
-    }
-
-    .feature-box p {
-      font-size: 1rem;
-      color: var(--text-medium);
-      margin: 0;
-      line-height: 1.5;
-    }
-
-    .left-top {
-      left: 0;
-      top: 80px;
-    }
-
-    .left-bottom {
-      left: 0;
-      bottom: calc(80px + 162px);
-    }
-
-    .right {
-      right: 0;
-      top: calc(50% - 126px);
-      transform: translateY(-50%);
-    }
-
-    /* Arrow connectors */
-    .feature-box::before {
-      content: "";
-      position: absolute;
-      width: 100px;
-      height: 2px;
-      background: linear-gradient(
-        to right,
-        #b0b0b0 0%,
-        #b0b0b0 80%,
-        transparent 100%
-      );
-    }
-
-    .left-top::before,
-    .left-bottom::before {
-      right: -100px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .right::before {
-      left: -100px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    @media (max-width: 1400px) {
-      .content-layout {
-        flex-direction: column;
-        gap: 3rem;
-        min-height: auto;
-        padding: 2rem;
-      }
-
-      .feature-box {
-        position: relative;
-        left: auto !important;
-        right: auto !important;
-        top: auto !important;
-        bottom: auto !important;
-        transform: none !important;
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      .feature-box::before {
-        display: none;
-      }
-
-      .chat-container {
-        max-width: 100%;
-      }
+      margin: 0 auto;
     }
   </style>
 </BaseLayout>
